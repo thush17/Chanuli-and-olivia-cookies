@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chanuli & Olivia's Cookie Co.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 3px solid #ff6b9d;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #ff6b9d;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #666;
+            font-style: italic;
+        }
+
+        .founders {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .founder-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            border: 2px solid #c44569;
+            text-align: center;
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+        }
+
+        .founder-name {
+            font-size: 1.8em;
+            color: #c44569;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            border: 2px solid #f8b500;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 1.4em;
+            color: #c44569;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .order-section {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 3px solid #40e0d0;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .order-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: #ff6b9d;
+            outline: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #ff6b9d, #c44569);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
+        }
+
+        .cookie-preview {
+            background: #f9f9f9;
+            border: 2px dashed #ff6b9d;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .cookie-shape {
+            width: 150px;
+            height: 150px;
+            background: #deb887;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            color: #8b4513;
+            font-weight: bold;
+            border: 3px solid #cd853f;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .price-info {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            border: 2px solid #98fb98;
+        }
+
+        .sparkle {
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .founders {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍪 Chanuli & Olivia's Cookie Co. 🍪</h1>
+            <p class="subtitle">Where Every Cookie Tells Your Story!</p>
+        </header>
+
+        <div class="founders">
+            <div class="founder-card">
+                <div class="founder-name">Chanuli</div>
+                <p>Co-Founder & Cookie Artist<br>Specializes in beautiful name designs!</p>
+            </div>
+            <div class="founder-card">
+                <div class="founder-name">Olivia</div>
+                <p>Co-Founder & Flavor Expert<br>Creates the most delicious recipes!</p>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">✨</div>
+                <div class="feature-title">Personalized Names</div>
+                <p>Every cookie is printed with your name or custom message. Perfect for parties, gifts, or just treating yourself!</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🎂</div>
+                <div class="feature-title">Perfect for Parties</div>
+                <p>Birthday parties, sleepovers, team celebrations - we'll make cookies with everyone's names!</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <div class="feature-title">School Events</div>
+                <p>From study groups to sports teams, add some sweetness to your school activities!</p>
+            </div>
+        </div>
+
+        <div class="order-section">
+            <h2 style="color: #40e0d0; margin-bottom: 20px;">🌟 Order Your Custom Cookies! 🌟</h2>
+            
+            <div class="price-info">
+                <h3 style="color: #d4851c; margin-bottom: 10px;">💰 Pricing</h3>
+                <p><strong>Single Cookie:</strong> $3 each<br>
+                <strong>Party Pack (6+ cookies):</strong> $2.50 each<br>
+                <strong>Class Set (20+ cookies):</strong> $2 each</p>
+            </div>
+
+            <form class="order-form" onsubmit="submitOrder(event)">
+                <div class="form-group">
+                    <label for="customerName">Your Name:</label>
+                    <input type="text" id="customerName" name="customerName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact">Contact (Phone/Email):</label>
+                    <input type="text" id="contact" name="contact" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantity">Number of Cookies:</label>
+                    <select id="quantity" name="quantity" onchange="updatePreview()">
+                        <option value="1">1 Cookie</option>
+                        <option value="6">6 Cookies (Party Pack)</option>
+                        <option value="12">12 Cookies</option>
+                        <option value="20">20+ Cookies (Class Set)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="names">Names to Print (one per line):</label>
+                    <textarea id="names" name="names" rows="4" placeholder="Enter names here...
+Emma
+Sophie
+Mia" onchange="updatePreview()"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="flavor">Cookie Flavor:</label>
+                    <select id="flavor" name="flavor">
+                        <option value="chocolate-chip">Chocolate Chip</option>
+                        <option value="sugar">Sugar Cookie</option>
+                        <option value="snickerdoodle">Snickerdoodle</option>
+                        <option value="double-chocolate">Double Chocolate</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="pickup">Pickup Date:</label>
+                    <input type="date" id="pickup" name="pickup" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="special">Special Requests:</label>
+                    <textarea id="special" name="special" rows="2" placeholder="Any special colors, designs, or messages?"></textarea>
+                </div>
+
+                <div class="cookie-preview">
+                    <h3 style="color: #c44569; margin-bottom: 15px;">Cookie Preview:</h3>
+                    <div class="cookie-shape" id="previewCookie">Your Name Here</div>
+                    <p id="totalPrice">Total: $3.00</p>
+                </div>
+
+                <button type="submit" class="submit-btn">🍪 Place Order! 🍪</button>
+            </form>
+        </div>
+
+        <footer>
+            <h3 style="color: #32cd32; margin-bottom: 15px;">🌈 Find Us At School! 🌈</h3>
+            <p><strong>Made fresh by high school students!</strong><br>
+            Orders take 2-3 days to complete<br>
+            All cookies made in a home kitchen with love ❤️</p>
+            <p style="margin-top: 15px;"><em>Follow us for updates and special flavors!</em></p>
+            <div style="margin-top: 20px;">
+                <span class="sparkle">✨</span> 
+                <span style="color: #ff6b9d; font-weight: bold;">Sweet Treats, Sweeter Friendships!</span> 
+                <span class="sparkle">✨</span>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function updatePreview() {
+            const quantity = parseInt(document.getElementById('quantity').value);
+            const names = document.getElementById('names').value.trim();
+            const previewCookie = document.getElementById('previewCookie');
+            const totalPrice = document.getElementById('totalPrice');
+
+            // Update preview with first name entered
+            if (names) {
+                const firstLine = names.split('\n')[0].trim();
+                previewCookie.textContent = firstLine || 'Your Name Here';
+            } else {
+                previewCookie.textContent = 'Your Name Here';
+            }
+
+            // Calculate price
+            let pricePerCookie;
+            if (quantity >= 20) {
+                pricePerCookie = 2.00;
+            } else if (quantity >= 6) {
+                pricePerCookie = 2.50;
+            } else {
+                pricePerCookie = 3.00;
+            }
+
+            const total = (quantity * pricePerCookie).toFixed(2);
+            totalPrice.textContent = `Total: $${total}`;
+        }
+
+        function submitOrder(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const orderDetails = {
+                customerName: formData.get('customerName'),
+                contact: formData.get('contact'),
+                quantity: formData.get('quantity'),
+                names: formData.get('names'),
+                flavor: formData.get('flavor'),
+                pickup: formData.get('pickup'),
+                special: formData.get('special')
+            };
+
+            // Create a summary
+            const namesList = orderDetails.names.split('\n').filter(name => name.trim()).join(', ');
+            const quantity = parseInt(orderDetails.quantity);
+            let pricePerCookie;
+            if (quantity >= 20) {
+                pricePerCookie = 2.00;
+            } else if (quantity >= 6) {
+                pricePerCookie = 2.50;
+            } else {
+                pricePerCookie = 3.00;
+            }
+            const total = (quantity * pricePerCookie).toFixed(2);
+
+            alert(`🍪 Order Received! 🍪\n\nHi ${orderDetails.customerName}!\n\nYour order:\n• ${quantity} ${orderDetails.flavor} cookies\n• Names: ${namesList}\n• Pickup: ${orderDetails.pickup}\n• Total: $${total}\n\nWe'll contact you at ${orderDetails.contact} to confirm!\n\nThanks for supporting our business! 💕\n- Chanuli & Olivia`);
+            
+            // Reset form
+            event.target.reset();
+            updatePreview();
+        }
+
+        // Initialize preview
+        updatePreview();
+
+        // Add some sparkle animation to elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const sparkles = document.querySelectorAll('.sparkle');
+            sparkles.forEach((sparkle, index) => {
+                sparkle.style.animationDelay = `${index * 0.5}s`;
+            });
+        });
+    </script>
+</body>
+</html>
